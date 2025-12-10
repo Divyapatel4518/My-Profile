@@ -18,3 +18,14 @@ export default defineConfig(({ mode }) => {
     },
     resolve: {
       alias: {
+        '@': path.resolve(__dirname, './'),
+      },
+    },
+    build: {
+      rollupOptions: {
+        external: ['lucide-react'],
+      },
+      outDir: 'dist',
+    },
+  };
+});
