@@ -10,13 +10,14 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, ".", "");
 
   return {
+    // IMPORTANT FOR GITHUB PAGES
     base: "/My-Profile/",
 
     plugins: [react()],
 
     resolve: {
       alias: {
-        "@": resolve(__dirname, "./"),
+        "@": resolve(__dirname, "./src"),
       },
     },
 
@@ -26,9 +27,6 @@ export default defineConfig(({ mode }) => {
     },
 
     build: {
-      rollupOptions: {
-        external: ["lucide-react", "framer-motion"],
-      },
       outDir: "dist",
     },
   };
