@@ -6,7 +6,8 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, '.', '');
 
   return {
-    base: '/My-Profile/", // MUST match your GitHub repo name
+    
+base: "/My-Profile/",
 
     server: {
       port: 3000,
