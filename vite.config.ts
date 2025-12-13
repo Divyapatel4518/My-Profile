@@ -1,4 +1,4 @@
-import { defineConfig, loadEnv } from "vite";
+import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { fileURLToPath } from "url";
 import { dirname, resolve } from "node:path";
@@ -6,28 +6,12 @@ import { dirname, resolve } from "node:path";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-export default defineConfig(({ mode }) => {
-  const env = loadEnv(mode, ".", "");
-
-  return {
-    // IMPORTANT FOR GITHUB PAGES
-    base: "/My-Profile/",
-
-    plugins: [react()],
-
-    resolve: {
-      alias: {
-        "@": resolve(__dirname, "./src"),
-      },
+export default defineConfig({
+  base: "/My-Profile/", // Must match your repo name
+  plugins: [react()],
+  resolve: {
+    alias: {
+      "@": resolve(__dirname, "./src"),
     },
-
-    define: {
-      "process.env.API_KEY": JSON.stringify(env.GEMINI_API_KEY),
-      "process.env.GEMINI_API_KEY": JSON.stringify(env.GEMINI_API_KEY),
-    },
-
-    build: {
-      outDir: "dist",
-    },
-  };
+  },
 });
